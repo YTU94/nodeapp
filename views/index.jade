@@ -1,6 +1,19 @@
 extends layout
 
 block content
-  h1= title
   p Welcome to #{title}
-  a(href="/test") test
+  p 时间：#{time}
+  form(action="")
+    .input-group
+      input.form-control(type="text", name="keyword", placeholder="serach")
+      span.input-group-btn
+        input(type="text", value="搜索", class="btn btn-default")
+  ul.list-group
+    for post in posts
+      li.list-group-item
+        h3
+          a(href="/detail?id="+ post._id +"")= post.title
+        p.info
+          span= '作者:' + post.author
+          span &nbsp;|&nbsp;
+          span= '日期：' + post.publishTime 

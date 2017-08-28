@@ -3,5 +3,40 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet", href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css")
   body
-    block content
+    nav.navbar.navbar-inverse
+      div.container
+        div.container-fluid
+          div.navbar-brand
+            a(href="/") YTUBlog
+          a.navbar-brand 首页
+          ul.nav.navbar-nav.navbar-right
+            - if (user)
+              li
+                a(href="/post")
+                  span.glyphicon.glyphicon-user 发表文章
+              li
+                a(href="/logout")
+                  span.glyphicon.glyphicon-log-ou 退出      
+            - else        
+              li
+                a(href="/reg")
+                  span.glyphicon.glyphicon-user 注册
+              li
+                a(href="/login")
+                  span.glyphicon.glyphicon-log-in 登录
+    .container
+      .col-sm-12
+        div
+          - if(success)
+            success
+          - else
+            error
+          h3  #{title}
+          .userArea.navbar-right
+            - if(user)
+              span= '用户：' + user.username
+            - else
+              span 用户：游客                        
+        block content

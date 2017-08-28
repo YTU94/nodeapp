@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  form(action="", method="POST", enctype="multipart/form-data")
+    .form-group
+      label(for="name") 标题：
+      input.form-control(type="text", name="title", placeholder="标题")
+    .form-group
+      label(for="name") 文章：
+      textarea.form-control(type="text", name="article" rows="8")
+    .form-group
+      label(for="name") 图片：
+      input.form-control(type="file", name="postImg")  
+    hr
+    input(type="hidden" name="pv" value="0")
+    input.btn.btn-default(type="submit" value="发表")

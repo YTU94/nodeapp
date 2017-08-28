@@ -5,12 +5,32 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var mongoose = require('mongoose'); 
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var flash = require('connect-flash');
 // var index = require('./routes/index');
 // var users = require('./routes/users');
 var routes = require('./routes/index');
 
 var app = express();
 
+// session 中间件
+app.use(session({
+  name: 'blog',// 设置 cookie 中保存 session id 的字段名称
+  secret: 'blog',// 通过设置 secret 来计算 hash 值并放在 cookie 中，使产生的 signedCookie 防篡改
+  cookie: {maxAge: 6000000},// 过期时间，过期后 cookie 中的 session id 自动删除
+  store:new MongoStore({url:'mongodb://localhost/blog'}),//将session储存到mongodb中
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(flash());
+// set flash
+app.use(function (req, res, next) {
+  res.locals.errors = req.flash('error');
+  res.locals.infos = req.flash('info');
+  next();
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+  form(action="", method="POST")
+    .form-group
+      label(for="name") 标题
+      input.form-control(type="text", name="title", value= post.title )
+    .form-group
+      label(for="name") 文章
+      textarea.form-control(name="article", cols="30", rows="8")= post.article
+    hr
+    input(type="hidden", value= post._id, name="id")
+    input.btn.btn-default(type="submit", value="保存修改")  

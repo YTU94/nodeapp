@@ -1,4 +1,4 @@
-model.exports = {
+module.exports = {
   port: 3000,
-  mongodb: 'mongodb://localhost/simpleBlog'
+  mongodb: 'mongodb://localhost/blog'
 }
