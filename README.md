@@ -5,7 +5,12 @@ nodejs + express + bootstrap + mongodb
 
 ## step
 
+<pre>
 git clone ...
+
 cd nodeapp
+
 npm install
+
 npm start
+<pre>
