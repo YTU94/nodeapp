@@ -13,7 +13,7 @@ cd nodeapp
 npm install
 
 npm start
-<pre>
+</pre>
 
 ## 数据库
 
