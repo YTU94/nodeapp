@@ -14,3 +14,7 @@ npm install
 
 npm start
 <pre>
+
+## 数据库
+
+mongodb 部分还是要简单配置下的哦
